@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ver libro | Planes de Transformación Digital</title>
+  <title>Carga de preentregas | Planes de Transformación Digital</title>
   <style>
     :root{
       --azul:#00AEEF;
@@ -111,7 +111,7 @@
     .nav-btn:hover{ background:#EAEAEA; }
 
     .layout{
-      width:min(1260px, 94%);
+      width:min(860px, 94%);
       margin:26px auto 50px;
       display:block;
     }
@@ -408,6 +408,25 @@
       margin-bottom:12px;
     }
 
+
+    .lista-cargas{ margin-top:20px; }
+    .lista-cargas h4{ margin:0 0 10px; font-size:.96rem; color:#1e1e1e; }
+    .item-carga{
+      border:1px solid #E2E2E2;
+      background:#FAFAFA;
+      padding:12px 14px;
+      margin-top:10px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .item-carga strong{ display:block; margin-bottom:4px; color:#222; }
+    .item-carga span{ display:block; color:#666; font-size:.86rem; line-height:1.45; }
+    .eliminar{ background:#F4DADA; color:#7A1F1F; }
+    .eliminar:hover{ background:#E9C6C6; }
+    .estado-vacio{ color:#666; font-size:.9rem; line-height:1.55; margin:0; }
+
     @media (max-width: 1100px){
       .hero-inner, .layout{ grid-template-columns:1fr; }
       .hero h1{ font-size:2.6rem; }
@@ -435,32 +454,139 @@
   </style>
 </head>
 <body>
+  <section class="hero no-print">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker">Publicación académica colaborativa</div>
+        <h1>Planes de Transformación Digital con Inteligencia Artificial (IA) y Tecnologías Emergentes</h1>
+        <p class="hero-sub">
+          Compilación académica de preentregas de la asignatura
+          <strong>Plataformas, economía y transformación digital</strong> del
+          <strong>Diploma de Posgrado en Negocios Digitales</strong>.
+        </p>
+      </div>
+
+      <aside class="hero-box">
+        <h2>Consigna para la carga de la preentrega</h2>
+        <p>En esta instancia deberán cargar una primera versión del trabajo, orientada a presentar el emprendimiento elegido y delimitar el problema, necesidad u oportunidad que se abordará en el Plan de Transformación Digital.</p>
+        <p>La preentrega no requiere todavía el desarrollo completo del plan, sino una caracterización inicial que permita reconocer el caso, el área de intervención y los primeros elementos para pensar una propuesta vinculada con Inteligencia Artificial (IA) y tecnologías emergentes.</p>
+        <p>Para completar la carga, deberán consignar los datos generales del trabajo y responder cada uno de los campos solicitados. Se recomienda redactar las respuestas con claridad, precisión y en un registro académico.</p>
+      </aside>
+    </div>
+  </section>
+
   <div class="topbar no-print">
     <div class="topbar-inner">
-      <strong>Libro digital · Preentregas</strong>
+      <strong>Libro digital · Carga de preentregas</strong>
       <nav>
-        <a href="index.html" class="nav-btn">Cargar preentrega</a>
-        <a href="index.html" class="secundario" style="display:inline-block;text-decoration:none;padding:12px 16px;font-size:.92rem;font-weight:800;">Inicio</a>
-          <a href="carga.html" class="secundario" style="display:inline-block;text-decoration:none;padding:12px 16px;font-size:.92rem;font-weight:800;">Cargar preentrega</a>
-          <button type="button" class="primario" onclick="window.print()">Imprimir / guardar en PDF</button>
+        <a href="index.html" class="nav-btn">Inicio</a>
+        <a href="libro.html" class="nav-btn" target="_blank" rel="noopener">Ver libro</a>
       </nav>
     </div>
   </div>
 
   <main class="layout">
-    <section class="visor" id="vista">
-      <div class="visor-body">
-        <div id="libro" class="libro"></div>
+    <section class="panel no-print" id="carga">
+      <div class="panel-header">
+        <h3>Carga de preentregas</h3>
+      </div>
+
+      <div class="panel-body">
+        <div class="nota">
+          La plantilla organiza la <strong>preentrega</strong> de cada trabajo. Esta instancia permite recortar el caso, identificar el área de intervención y formular el problema, necesidad u oportunidad que luego podrá desarrollarse en una segunda etapa.
+        </div>
+
+        <form id="formPlan">
+          <div class="bloque-suave">
+            <h4>Datos generales del trabajo</h4>
+
+            <div class="campo">
+              <label for="autor">Nombre y apellido</label>
+              <input type="text" id="autor" required />
+            </div>
+
+            <div class="campo">
+              <label for="correo">Correo electrónico</label>
+              <input type="email" id="correo" required />
+            </div>
+
+            <div class="campo">
+              <label for="titulo">Título del trabajo</label>
+              <input type="text" id="titulo" required />
+            </div>
+
+            <div class="campo">
+              <label for="organizacion">Emprendimiento</label>
+              <input type="text" id="organizacion" required />
+            </div>
+
+            <div class="campo">
+              <label for="sector">Sector o rubro</label>
+              <input type="text" id="sector" />
+            </div>
+
+            <div class="campo">
+              <label for="palabrasClave">Palabras clave</label>
+              <input type="text" id="palabrasClave" placeholder="Separadas por comas" />
+            </div>
+          </div>
+
+          <div class="tab-panel active" data-form-panel="pre">
+            <div class="campo">
+              <label for="pre_area">Área de intervención seleccionada</label>
+              <textarea id="pre_area" required></textarea>
+            </div>
+
+            <div class="campo">
+              <label for="pre_problema">Problema, necesidad u oportunidad detectada</label>
+              <textarea id="pre_problema" required></textarea>
+            </div>
+
+            <div class="campo">
+              <label for="pre_contexto">Contextualización del problema, necesidad u oportunidad detectada</label>
+              <textarea id="pre_contexto" required></textarea>
+              <div class="ayuda">Describir brevemente el funcionamiento del área y la situación del emprendimiento que resulte relevante para comprender el problema, la necesidad o la oportunidad detectada.</div>
+            </div>
+
+            <div class="campo">
+              <label for="pre_mejora">Breve caracterización</label>
+              <textarea id="pre_mejora" required></textarea>
+            </div>
+
+            <div class="campo">
+              <label for="pre_bibliografia">Bibliografía inicial</label>
+              <textarea id="pre_bibliografia" required></textarea>
+              <div class="ayuda">Podés incluir aquí 2 o 3 referencias de la materia que orienten el desarrollo posterior.</div>
+            </div>
+          </div>
+
+          <div class="acciones">
+            <button type="submit" class="primario">Agregar preentrega</button>
+            <button type="button" id="btnLimpiar" class="secundario">Limpiar</button>
+          </div>
+        </form>
+
+        <div class="bloque-suave lista-cargas">
+          <h4>Preentregas cargadas</h4>
+          <div id="listaCargas">
+            <p class="estado-vacio">Todavía no hay preentregas cargadas.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
+
+  <div class="pie-ui no-print">
+    Plantilla editorial en formato A4, optimizada para la compilación de preentregas en PDF.
+  </div>
 
   <script>
     const STORAGE_KEY_ANTERIOR = "libro_planes_transformacion_digital_preentregas_v1";
     const STORAGE_KEY = "libro_planes_transformacion_digital_preentregas_v3";
     localStorage.removeItem(STORAGE_KEY_ANTERIOR);
-
-    const libro = document.getElementById("libro");
+    const form = document.getElementById("formPlan");
+    const btnLimpiar = document.getElementById("btnLimpiar");
+    const listaCargas = document.getElementById("listaCargas");
 
     function obtenerPlanes(){
       try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
@@ -480,152 +606,70 @@
         .replace(/'/g, "&#039;");
     }
 
-    function crearPagina(contenido, numero = "", marca = "Diploma de Posgrado en Negocios Digitales"){
-      return `
-        <article class="pagina">
-          <div class="pagina-inner">${contenido}</div>
-          ${numero !== "" ? `<div class="numero">${numero}</div>` : ""}
-          <div class="marca">${marca}</div>
-        </article>
-      `;
-    }
-
-    function paginaPortada(){
-      return `
-        <article class="pagina portada">
-          <div class="pagina-inner">
-            <div class="portada-top">
-              <div>
-                <div class="portada-kicker">Libro digital académico</div>
-                <h1>Planes de Transformación Digital con Inteligencia Artificial (IA) y Tecnologías Emergentes</h1>
-                <h2>Preentregas de la asignatura <em>Plataformas, economía y transformación digital</em>.</h2>
-              </div>
-              <div class="portada-side">
-                <strong>Edición académica</strong><br><br>
-                Esta sección reúne los avances iniciales de los trabajos, centrados en la delimitación del caso, el área de intervención y el problema u oportunidad detectada.
-              </div>
-            </div>
-            <div class="portada-bottom">
-              <div><div class="barra"></div></div>
-              <div class="texto">
-                <p>La publicación fue concebida como un libro digital de circulación académica, con formato editorial A4 y estructura homogénea para facilitar la lectura, la revisión y la compilación de avances.</p>
-              </div>
-            </div>
-          </div>
-          <div class="marca">Preentregas</div>
-        </article>
-      `;
-    }
-
-    function paginaIndice(planes){
-      const items = planes.length
-        ? planes.map((plan, i) => `
-            <div class="sumario">
-              <div class="sumario-titulo">
-                <a href="#plan-pre-${i+1}">${escaparHTML(plan.titulo)}</a><br>
-                <span style="font-weight:normal; color:#555;">${escaparHTML(plan.autor)}</span>
-              </div>
-              <div class="sumario-pagina">p. ${i + 4}</div>
-            </div>
-          `).join("")
-        : `
-          <div class="sumario">
-            <div class="sumario-titulo">Sin preentregas incorporadas</div>
-            <div class="sumario-pagina">—</div>
-          </div>
-        `;
-
-      return crearPagina(`
-        <div class="texto">
-          <h2>Contenido</h2>
-          <p class="meta">Esta vista presenta la preentrega de cada trabajo cargado en el libro digital.</p>
-          ${items}
-        </div>
-      `, 1);
-    }
-
-    function paginaIntroduccion(){
-      return crearPagina(`
-        <div class="texto layout-editorial">
-          <aside class="columna-lateral">
-            <div class="linea"></div>
-            El propósito de esta compilación es visibilizar el proceso de construcción del trabajo académico.
-          </aside>
-          <div>
-            <h2>Introducción</h2>
-            <p>La preentrega constituye una instancia de recorte y formulación inicial del caso. Permite definir el emprendimiento, el área de intervención y el problema sobre el cual se proyectará posteriormente el plan.</p>
-            <p>Su valor pedagógico reside en hacer visible el punto de partida del análisis y la primera orientación de la propuesta.</p>
-            <div class="cita">“El valor de esta publicación no reside solo en los resultados, sino también en el recorrido de análisis, reformulación y profundización que los hace posibles.”<small>Sentido académico de la compilación</small></div>
-          </div>
-        </div>
-      `, 2);
-    }
-
-    function paginaMetodologia(){
-      return crearPagina(`
-        <div class="texto layout-editorial">
-          <aside class="columna-lateral">
-            <div class="linea"></div>
-            El libro fue diseñado para lectura digital e impresión en A4.
-          </aside>
-          <div>
-            <h2>Criterios de elaboración</h2>
-            <ul class="lista">
-              <li>Presentar el emprendimiento y el área de intervención seleccionada.</li>
-              <li>Delimitar el problema, necesidad u oportunidad detectada.</li>
-              <li>Contextualizar el problema, necesidad u oportunidad detectada.</li>
-              <li>Incluir una breve caracterización y una bibliografía inicial.</li>
-            </ul>
-          </div>
-        </div>
-      `, 3);
-    }
-
-    function paginaTrabajo(plan, i){
-      return crearPagina(`
-        <div class="texto layout-editorial" id="plan-pre-${i+1}">
-          <aside class="columna-lateral">
-            <div class="linea"></div>
-            Preentrega · ${escaparHTML(plan.organizacion)}
-          </aside>
-          <div>
-            <div class="badge-solapa">Preentrega</div>
-            <h2>${escaparHTML(plan.titulo)}</h2>
-            <p class="meta"><strong>Autor/a:</strong> ${escaparHTML(plan.autor)}<br><strong>Correo:</strong> ${escaparHTML(plan.correo)}<br><strong>Emprendimiento:</strong> ${escaparHTML(plan.organizacion)}<br><strong>Sector:</strong> ${escaparHTML(plan.sector || "No especificado")}<br><strong>Palabras clave:</strong> ${escaparHTML(plan.palabrasClave || "No especificadas")}</p>
-            <h3>Área de intervención seleccionada</h3>
-            <p>${escaparHTML(plan.pre_area)}</p>
-            <h3>Problema, necesidad u oportunidad detectada</h3>
-            <p>${escaparHTML(plan.pre_problema)}</p>
-            <h3>Contextualización del problema, necesidad u oportunidad detectada</h3>
-            <p>${escaparHTML(plan.pre_contexto)}</p>
-            <h3>Breve caracterización</h3>
-            <p>${escaparHTML(plan.pre_mejora)}</p>
-            <h3>Bibliografía inicial</h3>
-            <p>${escaparHTML(plan.pre_bibliografia)}</p>
-          </div>
-        </div>
-      `, i + 4, "Preentregas · Negocios Digitales");
-    }
-
-    function renderLibro(){
+    function renderCargas(){
       const planes = obtenerPlanes();
-      let html = "";
-      html += paginaPortada();
-      html += paginaIndice(planes);
-      html += paginaIntroduccion();
-      html += paginaMetodologia();
-
-      if(planes.length){
-        planes.forEach((plan, i) => { html += paginaTrabajo(plan, i); });
+      if(!planes.length){
+        listaCargas.innerHTML = '<p class="estado-vacio">Todavía no hay preentregas cargadas. Para probar el funcionamiento, completá el formulario, presioná “Agregar preentrega” y luego abrí “Ver libro”.</p>';
+        return;
       }
 
-      libro.innerHTML = html;
+      listaCargas.innerHTML = planes.map((plan, i) => `
+        <div class="item-carga">
+          <div>
+            <strong>${escaparHTML(plan.titulo || "Preentrega sin título")}</strong>
+            <span>${escaparHTML(plan.autor || "Autor/a no informado/a")} · ${escaparHTML(plan.organizacion || "Emprendimiento no informado")}</span>
+          </div>
+          <button type="button" class="eliminar" data-eliminar="${i}">Eliminar</button>
+        </div>
+      `).join("");
     }
 
+    function eliminarCarga(indice){
+      const planes = obtenerPlanes();
+      const plan = planes[indice];
+      if(!plan) return;
 
+      const confirmar = confirm(`¿Querés eliminar la preentrega “${plan.titulo || "sin título"}”? Esta acción no se puede deshacer.`);
+      if(!confirmar) return;
 
-    renderLibro();
+      planes.splice(indice, 1);
+      guardarPlanes(planes);
+      renderCargas();
+    }
 
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      const nueva = {
+        autor: document.getElementById("autor").value.trim(),
+        correo: document.getElementById("correo").value.trim(),
+        titulo: document.getElementById("titulo").value.trim(),
+        organizacion: document.getElementById("organizacion").value.trim(),
+        sector: document.getElementById("sector").value.trim(),
+        palabrasClave: document.getElementById("palabrasClave").value.trim(),
+        pre_area: document.getElementById("pre_area").value.trim(),
+        pre_problema: document.getElementById("pre_problema").value.trim(),
+        pre_contexto: document.getElementById("pre_contexto").value.trim(),
+        pre_mejora: document.getElementById("pre_mejora").value.trim(),
+        pre_bibliografia: document.getElementById("pre_bibliografia").value.trim()
+      };
+
+      const planes = obtenerPlanes();
+      planes.push(nueva);
+      guardarPlanes(planes);
+      form.reset();
+      renderCargas();
+      alert("La preentrega fue incorporada al libro digital. Para verla, usá el botón Ver libro.");
+    });
+
+    btnLimpiar.addEventListener("click", () => { form.reset(); });
+
+    listaCargas.addEventListener("click", (e) => {
+      const boton = e.target.closest("[data-eliminar]");
+      if(!boton) return;
+      eliminarCarga(Number(boton.getAttribute("data-eliminar")));
+    });
+
+    renderCargas();
   </script>
 </body>
 </html>
