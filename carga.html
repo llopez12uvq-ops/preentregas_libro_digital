@@ -501,13 +501,15 @@
             <h4>Datos generales del trabajo</h4>
 
             <div class="campo">
-              <label for="autor">Nombre y apellido</label>
-              <input type="text" id="autor" required />
+              <label for="autor">Autor/a o integrantes del equipo</label>
+              <input type="text" id="autor" required placeholder="Nombre Apellido, Nombre Apellido" />
+              <div class="ayuda">Si el trabajo es grupal, escriban los nombres y apellidos de todos/as los/as integrantes separados por coma.</div>
             </div>
 
             <div class="campo">
-              <label for="correo">Correo electrónico</label>
-              <input type="email" id="correo" required />
+              <label for="correo">Correo electrónico de contacto</label>
+              <input type="email" id="correo" multiple required placeholder="nombre@correo.com, otra.persona@correo.com" />
+              <div class="ayuda">Si el trabajo es grupal, pueden ingresar más de un correo electrónico separado por coma.</div>
             </div>
 
             <div class="campo">
@@ -617,7 +619,7 @@
         <div class="item-carga">
           <div>
             <strong>${escaparHTML(plan.titulo || "Preentrega sin título")}</strong>
-            <span>${escaparHTML(plan.autor || "Autor/a no informado/a")} · ${escaparHTML(plan.organizacion || "Emprendimiento no informado")}</span>
+            <span>${escaparHTML(plan.autor || "Autor/a o integrantes no informados/as")} · ${escaparHTML(plan.organizacion || "Emprendimiento no informado")}</span>
           </div>
           <button type="button" class="eliminar" data-eliminar="${i}">Eliminar</button>
         </div>
