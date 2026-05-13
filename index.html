@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceso | Planes de Transformación Digital</title>
+  <style>
+    :root{
+      --azul:#00AEEF; --azul-oscuro:#0078B8; --azul-profundo:#0B3C5D;
+      --gris-fondo:#eef3f7; --gris-borde:#d7e1ea; --texto:#1f2933;
+      --texto-suave:#52606d; --blanco:#ffffff; --sombra:0 18px 45px rgba(11,60,93,.15);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial, Helvetica, sans-serif;color:var(--texto);background:
+      radial-gradient(circle at top left, rgba(0,174,239,.16), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(11,60,93,.16), transparent 32%),
+      linear-gradient(135deg, #eef3f7 0%, #f7fafc 100%);}
+    .pagina{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 18px}
+    .contenedor{width:min(1180px,96%);display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:stretch}
+    .hero{background:linear-gradient(135deg,rgba(255,255,255,.94),rgba(255,255,255,.86)),
+      url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      border-radius:28px;overflow:hidden;box-shadow:var(--sombra);min-height:680px;display:flex;align-items:flex-end}
+    .hero-inner{padding:52px}
+    .eyebrow{display:inline-block;margin-bottom:18px;padding:9px 14px;border-radius:999px;background:rgba(0,174,239,.13);
+      color:var(--azul-oscuro);font-size:.84rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    h1{margin:0 0 18px;font-size:3.15rem;line-height:1.02;color:var(--azul-profundo);font-weight:900}
+    p{font-size:1.05rem;line-height:1.75;color:#334e68}
+    .destacado{margin-top:24px;padding:22px 24px;border-left:6px solid var(--azul);background:rgba(255,255,255,.86);border-radius:18px}
+    .panel{background:rgba(255,255,255,.94);border:1px solid var(--gris-borde);border-radius:28px;box-shadow:var(--sombra);
+      padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:22px}
+    .panel h2{margin:0 0 12px;font-size:1.65rem;color:var(--azul-profundo)}
+    .tarjetas{display:grid;gap:16px}
+    .tarjeta{background:#fff;border:1px solid #dce8f1;border-radius:20px;padding:20px}
+    .tarjeta h3{margin:0 0 8px;font-size:1.04rem;color:var(--azul-oscuro)}
+    .tarjeta p{margin:0;font-size:.96rem;color:#486581}
+    .acciones{display:grid;gap:14px}
+    .boton{display:flex;align-items:center;justify-content:center;text-decoration:none;padding:16px 18px;border-radius:16px;font-weight:800}
+    .boton-primario{background:linear-gradient(135deg,var(--azul),var(--azul-oscuro));color:#fff}
+    .boton-secundario{background:#fff;color:var(--azul-profundo);border:1px solid #cfe1ec}
+    .mini-info{padding-top:18px;border-top:1px solid #e3ebf2;font-size:.94rem;line-height:1.55;color:var(--texto-suave)}
+    @media(max-width:980px){.contenedor{grid-template-columns:1fr}.hero{min-height:auto}.hero-inner{padding:34px 26px}h1{font-size:2.3rem}.panel{padding:24px}}
+  </style>
+</head>
+<body>
+  <main class="pagina">
+    <section class="contenedor">
+      <article class="hero">
+        <div class="hero-inner">
+          <div class="eyebrow">Acceso al trabajo académico</div>
+          <h1>Planes de Transformación Digital con Inteligencia Artificial (IA) y Tecnologías Emergentes</h1>
+          <p>Este espacio reúne las preentregas de los trabajos elaborados en el marco del curso.</p>
+          <div class="destacado">
+            <p>Las entregas cargadas se guardan en una planilla de Google Sheets y el libro digital las recupera desde allí.</p>
+          </div>
+        </div>
+      </article>
+      <aside class="panel">
+        <div>
+          <h2>Ingresar al entorno de trabajo</h2>
+          <p>Desde aquí pueden cargar una preentrega o consultar el libro digital actualizado.</p>
+        </div>
+        <div class="tarjetas">
+          <div class="tarjeta"><h3>Carga de preentrega</h3><p>Formulario conectado a una planilla de Google Sheets.</p></div>
+          <div class="tarjeta"><h3>Libro digital</h3><p>Visualización editorial de las producciones incorporadas.</p></div>
+        </div>
+        <div class="acciones">
+          <a class="boton boton-primario" href="carga.html">Cargar preentrega</a>
+          <a class="boton boton-secundario" href="libro.html">Ver libro digital</a>
+        </div>
+        <div class="mini-info">Importante: para que funcione, primero hay que configurar el enlace del Web App de Google Apps Script en <strong>carga.html</strong> y <strong>libro.html</strong>.</div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

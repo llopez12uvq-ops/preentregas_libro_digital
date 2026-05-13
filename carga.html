@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carga de preentregas | Planes de Transformación Digital</title>
+  <style>
+    :root{--azul:#00AEEF;--azul-oscuro:#0078B8;--azul-suave:#EAF8FE;--gris-fondo:#ECECEC;--gris-linea:#D9D9D9;--texto:#222;--sombra:0 10px 30px rgba(0,0,0,.10)}
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--texto);background:var(--gris-fondo)}
+    .hero{background:linear-gradient(90deg,rgba(255,255,255,.96),rgba(255,255,255,.82)),url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;min-height:38vh;display:flex;align-items:flex-end;border-bottom:1px solid var(--gris-linea)}
+    .hero-inner{width:min(960px,94%);margin:0 auto;padding:48px 0 36px}
+    .hero-kicker{font-size:.82rem;text-transform:uppercase;letter-spacing:.10em;color:var(--azul-oscuro);font-weight:800;margin-bottom:14px}
+    h1{margin:0 0 14px;font-size:2.7rem;line-height:1.02;color:var(--azul);font-weight:900}
+    .hero p{max-width:820px;color:#4D4D4D;font-size:1.05rem;line-height:1.65}
+    .topbar{background:#fff;border-bottom:1px solid var(--gris-linea)} .topbar-inner{width:min(960px,94%);margin:0 auto;padding:14px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+    .nav-btn{display:inline-block;text-decoration:none;background:#F2F2F2;padding:10px 14px;font-size:.9rem;font-weight:700;color:#333;border:1px solid #E2E2E2}
+    .layout{width:min(960px,94%);margin:26px auto 50px}
+    .panel{background:#fff;border:1px solid var(--gris-linea);box-shadow:var(--sombra)}
+    .panel-header{padding:18px 22px;border-bottom:1px solid #E7E7E7;background:#FAFAFA}.panel-header h2{margin:0;font-size:1.08rem}
+    .panel-body{padding:22px}.nota{background:var(--azul-suave);border-left:5px solid var(--azul);padding:14px 16px;font-size:.94rem;line-height:1.65;color:#3F5560;margin-bottom:20px}
+    .bloque-suave{background:#FAFAFA;border:1px solid #E7E7E7;padding:16px;margin-bottom:18px}.bloque-suave h3{margin:0 0 10px;font-size:.96rem}
+    .campo{margin-bottom:16px}.campo label{display:block;margin-bottom:6px;font-size:.93rem;font-weight:800}
+    .campo input,.campo textarea{width:100%;border:1px solid #CCC;background:#fff;padding:12px 13px;font-size:.95rem;font-family:Arial,Helvetica,sans-serif;border-radius:0}
+    .campo textarea{min-height:96px;resize:vertical;line-height:1.55}.ayuda{font-size:.82rem;line-height:1.45;color:#666;margin-top:5px}
+    .acciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}button{border:none;padding:12px 16px;font-size:.92rem;font-weight:800;cursor:pointer}
+    .primario{background:var(--azul);color:#fff}.secundario{background:#ECECEC;color:#333}
+    .estado{display:none;margin-top:16px;padding:14px 16px;border-left:5px solid var(--azul);background:#eefaff;line-height:1.55}
+    .error-config{margin-bottom:16px;padding:14px 16px;border-left:5px solid #b00020;background:#fff2f4;color:#68131f;line-height:1.55}
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Publicación académica colaborativa</div>
+      <h1>Carga de preentregas</h1>
+      <p>Las preentregas cargadas en este formulario se guardan en una planilla de Google Sheets.</p>
+    </div>
+  </section>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <strong>Libro digital · Carga de preentregas</strong>
+      <nav>
+        <a href="index.html" class="nav-btn">Inicio</a>
+        <a href="libro.html" class="nav-btn">Ver libro</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="panel-header"><h2>Carga de preentregas</h2></div>
+      <div class="panel-body">
+        <div id="configAviso" class="error-config" style="display:none;">
+          Falta configurar la URL del Web App de Google Apps Script en este archivo.
+        </div>
+
+        <div class="nota">
+          Completá los datos del trabajo y presioná <strong>Enviar preentrega</strong>. La información se guardará en la planilla vinculada al libro digital.
+        </div>
+
+        <form id="formPlan" method="POST" target="envioOculto">
+          <div class="bloque-suave">
+            <h3>Datos generales del trabajo</h3>
+
+            <div class="campo">
+              <label for="autor">Autor/a o integrantes del equipo</label>
+              <input type="text" id="autor" name="autor" required placeholder="Nombre Apellido, Nombre Apellido" />
+              <div class="ayuda">Si el trabajo es grupal, escriban los nombres y apellidos de todos/as los/as integrantes separados por coma.</div>
+            </div>
+
+            <div class="campo">
+              <label for="correo">Correo electrónico de contacto</label>
+              <input type="email" id="correo" name="correo" multiple required placeholder="nombre@correo.com, otra.persona@correo.com" />
+              <div class="ayuda">Si el trabajo es grupal, pueden ingresar más de un correo electrónico separado por coma.</div>
+            </div>
+
+            <div class="campo"><label for="titulo">Título del trabajo</label><input type="text" id="titulo" name="titulo" required /></div>
+            <div class="campo"><label for="organizacion">Emprendimiento</label><input type="text" id="organizacion" name="organizacion" required /></div>
+            <div class="campo"><label for="sector">Sector o rubro</label><input type="text" id="sector" name="sector" /></div>
+            <div class="campo"><label for="palabrasClave">Palabras clave</label><input type="text" id="palabrasClave" name="palabrasClave" placeholder="Separadas por comas" /></div>
+          </div>
+
+          <div class="campo"><label for="pre_area">Área de intervención seleccionada</label><textarea id="pre_area" name="pre_area" required></textarea></div>
+          <div class="campo"><label for="pre_problema">Problema, necesidad u oportunidad detectada</label><textarea id="pre_problema" name="pre_problema" required></textarea></div>
+          <div class="campo">
+            <label for="pre_contexto">Contextualización del problema, necesidad u oportunidad detectada</label>
+            <textarea id="pre_contexto" name="pre_contexto" required></textarea>
+          </div>
+          <div class="campo"><label for="pre_mejora">Breve caracterización</label><textarea id="pre_mejora" name="pre_mejora" required></textarea></div>
+          <div class="campo"><label for="pre_bibliografia">Bibliografía inicial</label><textarea id="pre_bibliografia" name="pre_bibliografia" required></textarea></div>
+
+          <div class="acciones">
+            <button type="submit" class="primario" id="btnEnviar">Enviar preentrega</button>
+            <button type="button" class="secundario" id="btnLimpiar">Limpiar</button>
+          </div>
+        </form>
+
+        <div id="estado" class="estado"></div>
+        <iframe name="envioOculto" id="envioOculto" style="display:none;"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // PEGAR ACÁ LA URL DEL WEB APP DE GOOGLE APPS SCRIPT.
+    // Debe terminar generalmente en /exec
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwq0eKhJNEngDG3DxagVBvmG3gzm2lHsWwNustO0d5fDTtd2Jf4mNNuwLCI3-ZpyPLh6A/exec";
+
+    const form = document.getElementById("formPlan");
+    const estado = document.getElementById("estado");
+    const btnLimpiar = document.getElementById("btnLimpiar");
+    const btnEnviar = document.getElementById("btnEnviar");
+    const configAviso = document.getElementById("configAviso");
+
+    if(!WEB_APP_URL || WEB_APP_URL.includes("PEGAR_ACA")){
+      configAviso.style.display = "block";
+      btnEnviar.disabled = true;
+      btnEnviar.style.opacity = ".5";
+    }else{
+      form.action = WEB_APP_URL;
+    }
+
+    btnLimpiar.addEventListener("click", () => form.reset());
+
+    form.addEventListener("submit", function(){
+      estado.style.display = "block";
+      estado.innerHTML = "Enviando la preentrega. Esperá unos segundos...";
+      btnEnviar.disabled = true;
+      setTimeout(() => {
+        estado.innerHTML = "La preentrega fue enviada. Podés abrir <a href='libro.html'>Ver libro</a> para visualizarla. Si no aparece de inmediato, actualizá la página del libro.";
+        form.reset();
+        btnEnviar.disabled = false;
+      }, 2500);
+    });
+  </script>
+</body>
+</html>
